@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "예비석사생의 일기장"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Your Name"
@@ -93,16 +93,16 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Kim Woo Kyung"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
-  email            :
+  bio              : "Currently at SKKU."
+  location         : "Suwon Korea"
+  email            : "kwk9926@gmail.com"
   links:
-    - label: "Email"
+    - label: "kwk9926@gmail.com"
       icon: "fas fa-fw fa-envelope-square"
       # url: "mailto:your.name@email.com"
-    - label: "Website"
+    - label: "https://kwk2696.github.io"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
     - label: "Twitter"
@@ -111,7 +111,7 @@ author:
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
-    - label: "GitHub"
+    - label: "https://github.com/kwk2696/"
       icon: "fab fa-fw fa-github"
       # url: "https://github.com/"
     - label: "Instagram"
