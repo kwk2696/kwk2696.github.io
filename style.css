@@ -74,7 +74,9 @@ a:hover {
   text-decoration: none;
 }
 
-body,
+body {
+  backgroud-color: #d4d4d4;
+},
 td,
 th,
 tr,
