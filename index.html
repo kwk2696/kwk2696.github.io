@@ -3,11 +3,28 @@
     <head>
       <title> Woo Kyung Kim </title>
       <meta name="author" content="Woo Kyung Kim">
-      <meta name="viewpoint" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" type="text/css" href="style.css">
+      <script>
+        (function() {
+          var theme = localStorage.getItem('theme');
+          if (!theme) {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        })();
+      </script>
     </head>
 
   <body>
+    <nav class="top-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="index.html#publications">Publications</a>
+      <a href="blog.html">Blog</a>
+      <button id="theme-toggle" aria-label="Toggle dark mode"></button>
+    </nav>
     <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
       <tr style="padding:0px">
         <td style="padding:0px">
@@ -18,33 +35,59 @@
                   <name>Woo Kyung Kim</name>
                 </p>
   
-                <p>I am currently a PhD student at <a href="https://sites.google.com/view/csi-agent-group/about?authuser=0"> Computer Systems Intelligence (CSI) Lab </a> in SungKyunKwan University, advised by <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ&hl=ko">Honguk Woo</a>. My research areas include skill-based reinforcement learning, diffusion model, embodied agent.
+                <p>I am a PhD student at the <a href="https://sites.google.com/view/csi-agent-group/about?authuser=0">Computer Systems Intelligence (CSI) Lab</a> in SungKyunKwan University, advised by <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ&hl=ko">Prof. Honguk Woo</a>. I received my M.S. and B.S. in Computer Science and Engineering from the same university. My research focuses on <strong>skill-based reinforcement learning</strong>, <strong>diffusion models</strong>, and <strong>embodied agents</strong>.
                 </p>
                 <p style="text-align:center">
 		    <a href="https://scholar.google.com/citations?user=OFFacb0AAAAJ">Google Scholar</a> &nbsp/&nbsp
                     <a href="data/cv.pdf">CV</a> &nbsp/&nbsp
-		    <a href="https://github.com/kwk2696">Github</a>
+		    <a href="https://github.com/kwk2696">Github</a> &nbsp/&nbsp
+		    <a href="https://www.linkedin.com/in/woo-kyung-kim-3474242a2/">LinkedIn</a>
                 </p>
               </td>
               <td style="padding:2.5%;width:40%;max-width:40%">
-		<a href="images/WooKyungKim.jpg"><img style="width:60%;max-width:60%" alt="profile photo" src="images/WooKyungKim.jpg" class="hoverZoomLink"></a>
+		<a href="images/WooKyungKim.jpg"><img style="width:60%;max-width:60%;border-radius:50%" alt="profile photo" src="images/WooKyungKim.jpg" class="hoverZoomLink"></a>
               </td>
             </tr>
           </tbody></table>
-<!--   	  <hr style="width:100%;">
+<!--      <hr style="width:100%;">
           <h2>News</h2>
-          <ul>
-          </ul>
-          <br> -->
+          <ul class="news-list">
+            <li><span class="news-date">[2025.02]</span> One paper accepted at <strong>AAAI 2025</strong>.</li>
+            <li><span class="news-date">[2024.09]</span> Two papers accepted at <strong>NeurIPS 2024</strong>.</li>
+            <li><span class="news-date">[2024.04]</span> One paper accepted at <strong>IJCAI 2024</strong>.</li>
+            <li><span class="news-date">[2024.05]</span> One paper accepted at <strong>ICML 2024</strong>.</li>
+            <li><span class="news-date">[2023.12]</span> One paper accepted at <strong>AAAI 2024</strong>.</li>
+          </ul> -->
 	  <hr style="width:100%;">
-          <h2>Conference Publications</h2>
+          <h2>Education</h2>
+          <ul class="education-list">
+            <li>
+              <strong>Ph.D.</strong> in Computer Science and Engineering, SungKyunKwan University
+              <span class="edu-period">Sep. 2022 - Present</span>
+              <div class="edu-detail">Specialist Research Personnel (전문연구요원), Sep. 2024 - Present</div>
+            </li>
+            <li>
+              <strong>M.S.</strong> in Computer Science and Engineering, SungKyunKwan University
+              <span class="edu-period">Mar. 2021 - Aug. 2022</span>
+            </li>
+            <li>
+              <strong>B.S.</strong> in Computer Science and Engineering, SungKyunKwan University
+              <span class="edu-period">Mar. 2017 - Feb. 2021</span>
+            </li>
+            <li>
+              <strong>High School</strong>, Korean Minjok Leadership Academy (민족사관고등학교)
+              <span class="edu-period">Mar. 2014 - Feb. 2017</span>
+            </li>
+          </ul>
+	  <hr style="width:100%;">
+          <h2 id="publications">Conference Publications</h2>
 	    <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
 		<tr onmouseout="nightsight_stop()" onmouseover="nightsight_start()">
                 <td style="padding:20px;width:25%;vertical-align:middle">
 		  <img src="images/ICPAD_AAAI25.png" alt="ICPAD" style="border-style: none" width="300">
 		</td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href=""
+		<a href="">
                 <papertitle>In-Context Policy Adaptation via Cross-Domain Skill Diffusion</papertitle>
 		</a>
                 <br>
@@ -52,7 +95,7 @@
                 <strong>Woo Kyung Kim</strong>,
                 <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ&hl=ko">Honguk Woo</a>
                 <br>
-                <em>AAAI</em>, 2025.02, Philadephia, United States
+                <em>AAAI</em>, 2025.02, Philadelphia, United States
                 <br>
                 <p></p>
 				<p>In this work, we present an in-context policy adaptation (ICPAD) framework designed for long-horizon multi-task environments, exploring diffusion-based skill learning techniques in cross-domain settings.</p>
@@ -65,7 +108,7 @@
 		  <img src="images/LDuS_NeurIPS24.png" alt="LDuS" style="border-style: none" width="300">
 		</td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href="https://openreview.net/pdf?id=UGlDVc0GTU"
+		<a href="https://openreview.net/pdf?id=UGlDVc0GTU">
                 <papertitle>LLM-based Skill Diffusion for Zero-shot Policy Adaptation</papertitle>
 		</a>
                 <br>
@@ -87,7 +130,7 @@
 		  <img src="images/IsCiL_NeurIPS24.png" alt="IsCiL" style="border-style: none" width="300">
 		</td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/1f0832859514e53a0e4f229fc9b3a4a2-Paper-Conference.pdf"
+		<a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/1f0832859514e53a0e4f229fc9b3a4a2-Paper-Conference.pdf">
                 <papertitle>Incremental Learning of Retrievable Skills for Efficient Continual Task Adaptation</papertitle>
 		</a>
                 <br>
@@ -100,7 +143,7 @@
                 <em>NeurIPS</em>, 2024.12, Vancouver, Canada
                 <br>
                 <p></p>
-               	<p>We intrudocue IsCiL, an adapter-based continual imitation learning framework that incrementally learns sharable skills from different demonstrations, enabling sample efficient task adaptation using the skills.</p>
+               	<p>We introduce IsCiL, an adapter-based continual imitation learning framework that incrementally learns sharable skills from different demonstrations, enabling sample efficient task adaptation using the skills.</p>
                 </td>
                 </tr>
 	   </table>
@@ -110,7 +153,7 @@
 		  <img src="images/ParIRL_IJCAI24.png" alt="ParIRL" style="border-style: none" width="300">
 		</td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href="https://arxiv.org/pdf/2408.12110"
+		<a href="https://arxiv.org/pdf/2408.12110">
                 <papertitle>Pareto Inverse Reinforcement Learning for Diverse Expert Policy Generation</papertitle>
 		</a>
                 <br>
@@ -131,7 +174,7 @@
 		  <img src="images/DEDER_ICML24.png" alt="DEDER" style="border-style: none" width="300">
 		</td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href="https://openreview.net/pdf?id=M4Htd52HMH"
+		<a href="https://openreview.net/pdf?id=M4Htd52HMH">
                 <papertitle>Embodied CoT Distillation From LLM To Off-the-shelf Agents</papertitle>
 		</a>
                 <br>
@@ -153,7 +196,7 @@
 		  <img src="images/DuSkill_AAAI24.png" alt="DuSkill" style="border-style: none" width="300">
 		</td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href="https://arxiv.org/pdf/2403.00225"
+		<a href="https://arxiv.org/pdf/2403.00225">
                 <papertitle>Robust Policy Learning via Offline Skill Diffusion</papertitle>
 		</a>
                 <br>
@@ -174,7 +217,7 @@
 		  <img src="images/ConPE_NeurIPS23.png" alt="ConPE" style="border-style: none" width="300">
 		</td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href="https://openreview.net/pdf?id=Ny3GcHLyzj"
+		<a href="https://openreview.net/pdf?id=Ny3GcHLyzj">
                 <papertitle>Efficient Policy Adaptation with Contrastive Prompt Ensemble for Embodied Agents</papertitle>
 		</a>
                 <br>
@@ -186,7 +229,7 @@
                 <em>NeurIPS</em>, 2023.12, New Orleans, United States
                 <br>
                 <p></p>
-               	<p>Wwe present a novel contrastive prompt ensemble (ConPE) framework which utilizes a pretrained vision-language model and a set of visual prompts, thus enables efficient policy learning and adaptation upon environmental and physical changes encountered by embodied agents.</p>
+               	<p>We present a novel contrastive prompt ensemble (ConPE) framework which utilizes a pretrained vision-language model and a set of visual prompts, thus enables efficient policy learning and adaptation upon environmental and physical changes encountered by embodied agents.</p>
                 </td>
                 </tr>
 	   </table>
@@ -196,7 +239,7 @@
 		  <img src="images/OnIS_ICML23.png" alt="OnIS" style="border-style: none" width="300">
 		</td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href="https://proceedings.mlr.press/v202/shin23d/shin23d.pdf"
+		<a href="https://proceedings.mlr.press/v202/shin23d/shin23d.pdf">
                 <papertitle>One-shot Imitation in a Non-stationary Environment via Multi-modal Skill</papertitle>
 		</a>
                 <br>
@@ -218,10 +261,33 @@
 	   <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
 		<tr onmouseout="nightsight_stop()" onmouseover="nightsight_start()">
                 <td style="padding:20px;width:25%;vertical-align:middle">
+		  <img src="images/A2D2_ESWA.png" alt="A2D2" style="border-style: none" width="300">
+		</td>
+                <td style="padding:20px;width:75%;vertical-align:middle">
+		<a href="https://www.sciencedirect.com/science/article/pii/S0957417425041090">
+                <papertitle>Aspect-Augmented Distillation of Task-Oriented Dialogues to Small Language Models</papertitle>
+		</a>
+                <br>
+				Jongmoon Jun,
+                <strong>Woo Kyung Kim</strong>,
+				Hyunseong Na,
+                <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ">Honguk Woo</a>,
+				Jeehyeong Kim
+                <br>
+                <em>Expert Systems with Applications</em>, 2025
+                <br>
+                <p></p>
+               	<p>We present A2D2, an aspect-augmented dialogue distillation framework designed to transfer capabilities from larger language models to smaller ones for task-oriented dialogue systems, incorporating human aspect-aware capabilities while maintaining task requirements.</p>
+                </td>
+                </tr>
+	   </table>
+	   <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+		<tr onmouseout="nightsight_stop()" onmouseover="nightsight_start()">
+                <td style="padding:20px;width:25%;vertical-align:middle">
 		  <img src="images/Repot_IEEE.png" alt="Repot" style="border-style: none" width="300">
 		</td>
                 <td style="padding:20px;width:75%;vertical-align:middle">
-		<a href="https://ieeexplore.ieee.org/abstract/document/9599665/"
+		<a href="https://ieeexplore.ieee.org/abstract/document/9599665/">
                 <papertitle>Repot: Transferable Reinforcement Learning for Quality-Centric Networked Monitoring in Various Environments</papertitle>
 		</a>
                 <br>
@@ -230,7 +296,7 @@
 				Sung Hyun Choi,
                 <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ">Honguk Woo</a>
                 <br>
-                <em>IEE Access</em>, 2023.11. Volume 9, Page 147280-147294
+                <em>IEEE Access</em>, 2023.11. Volume 9, Page 147280-147294
                 <br>
                 <p></p>
                	<p> In this paper, we present a transferable RL model Repot in which a policy trained in an easy-to-learn network environment can be readily adjusted in various target network environments.</p>
@@ -240,5 +306,31 @@
     	</td>
       </tr>
     </table>
+    <footer class="site-footer">
+      &copy; 2026 Woo Kyung Kim. All rights reserved.
+      <br>
+      Total visitors: <img src="https://kwk2696.goatcounter.com/counter/.svg" alt="visitor count" style="vertical-align:middle;border:none;">
+    </footer>
+    <script data-goatcounter="https://kwk2696.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+      (function() {
+        var toggle = document.getElementById('theme-toggle');
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        toggle.textContent = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+
+        toggle.addEventListener('click', function() {
+          isDark = !isDark;
+          if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            toggle.textContent = '\u2600\uFE0F';
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            toggle.textContent = '\uD83C\uDF19';
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
