@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <title>First Post - Woo Kyung Kim</title>
+      <meta name="author" content="Woo Kyung Kim">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" type="text/css" href="../style.css">
+      <script>
+        (function() {
+          var theme = localStorage.getItem('theme');
+          if (!theme) {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        })();
+      </script>
+    </head>
+
+  <body>
+    <nav class="top-nav">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../blog.html" class="active">Blog</a>
+      <button id="theme-toggle" aria-label="Toggle dark mode"></button>
+    </nav>
+
+    <div class="post-content">
+      <h1>First Post: Welcome to My Blog</h1>
+      <div class="post-meta">2026-02-16</div>
+
+      <p>This is a sample blog post. You can write about your research, thoughts, or anything you'd like to share.</p>
+
+      <p>To create a new post, copy this file and update the title, date, and content. Then add a link to the new post in blog.html.</p>
+
+      <a class="back-link" href="../blog.html">&larr; Back to Blog</a>
+    </div>
+    <footer class="site-footer">
+      &copy; 2026 Woo Kyung Kim. All rights reserved.
+    </footer>
+    <script data-goatcounter="https://kwk2696.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script>
+      (function() {
+        var toggle = document.getElementById('theme-toggle');
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        toggle.textContent = isDark ? '\u2600\uFE0F' : '\uD83C\uDF19';
+
+        toggle.addEventListener('click', function() {
+          isDark = !isDark;
+          if (isDark) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+            toggle.textContent = '\u2600\uFE0F';
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'light');
+            toggle.textContent = '\uD83C\uDF19';
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
