@@ -567,6 +567,64 @@ body {
   padding-left: 4px;
 }
 
+/* Skills */
+.skills-list {
+  margin-top: 12px;
+}
+
+.skill-group {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--hr-color);
+}
+
+.skill-group:last-child {
+  border-bottom: none;
+}
+
+.skill-label {
+  flex-shrink: 0;
+  width: 120px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--link-color);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 13px;
+  border: 1px solid var(--pill-border);
+  border-radius: 14px;
+  background-color: var(--pill-bg);
+  color: var(--text-color);
+  transition: all 0.2s;
+}
+
+.skill-tag:hover {
+  border-color: var(--link-color);
+  color: var(--link-color);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 600px) {
+  .skill-group {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .skill-label {
+    width: auto;
+  }
+}
+
 /* News */
 .news-list {
   list-style: none;
