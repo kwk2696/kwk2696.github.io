@@ -132,11 +132,11 @@ h2 {
   color: var(--text-color);
 }
 
+papertitle,
 .papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: var(--text-color);
 }
 
 name {
@@ -314,6 +314,7 @@ hr {
   justify-content: center;
 }
 
+.pub-card-content papertitle,
 .pub-card-content .papertitle {
   font-size: 15px;
   line-height: 1.4;
@@ -369,6 +370,111 @@ hr {
   max-width: 900px;
   margin: 0 auto;
   padding-top: 12px;
+}
+
+/* Publication category tags */
+.tag-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 24px;
+  margin-top: 14px;
+}
+
+.tag-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--text-color);
+  opacity: 0.85;
+}
+
+
+.pub-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.pub-title-row papertitle,
+.pub-title-row .papertitle {
+  display: inline;
+  margin-bottom: 0;
+}
+
+.pub-tag {
+  display: inline-block;
+  flex-shrink: 0;
+  padding: 1px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.3px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.pub-tag::before {
+  content: '[';
+}
+
+.pub-tag::after {
+  content: ']';
+}
+
+/* Each category gets its own color (extend as needed) */
+.pub-tag.tag-rl {
+  color: #0f9d58;
+  background-color: rgba(15, 157, 88, 0.12);
+  border-color: rgba(15, 157, 88, 0.35);
+}
+
+[data-theme="dark"] .pub-tag.tag-rl {
+  color: #4cc48a;
+  background-color: rgba(76, 196, 138, 0.15);
+  border-color: rgba(76, 196, 138, 0.4);
+}
+
+/* [SL] Skill-based Policy Learning - purple */
+.pub-tag.tag-sl {
+  color: #9334e6;
+  background-color: rgba(147, 52, 230, 0.1);
+  border-color: rgba(147, 52, 230, 0.3);
+}
+
+[data-theme="dark"] .pub-tag.tag-sl {
+  color: #c08bf0;
+  background-color: rgba(192, 139, 240, 0.15);
+  border-color: rgba(192, 139, 240, 0.4);
+}
+
+/* [AA] Agentic AI - red */
+.pub-tag.tag-aa {
+  color: #d93025;
+  background-color: rgba(217, 48, 37, 0.08);
+  border-color: rgba(217, 48, 37, 0.3);
+}
+
+[data-theme="dark"] .pub-tag.tag-aa {
+  color: #f28b82;
+  background-color: rgba(242, 139, 130, 0.12);
+  border-color: rgba(242, 139, 130, 0.4);
+}
+
+/* [EP] Embodied Planning - teal */
+.pub-tag.tag-ep {
+  color: #12a4af;
+  background-color: rgba(18, 164, 175, 0.1);
+  border-color: rgba(18, 164, 175, 0.3);
+}
+
+[data-theme="dark"] .pub-tag.tag-ep {
+  color: #4ecdd6;
+  background-color: rgba(78, 205, 214, 0.13);
+  border-color: rgba(78, 205, 214, 0.4);
 }
 
 @media (max-width: 600px) {
@@ -664,8 +770,4 @@ body {
   font-size: 12px;
   color: var(--text-color);
   opacity: 0.5;
-}
-
-span.highlight {
-  background-color: #ffffd0;
 }

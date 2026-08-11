@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+      <meta charset="utf-8">
       <title> Woo Kyung Kim </title>
       <meta name="author" content="Woo Kyung Kim">
-      <meta name="description" content="Woo Kyung Kim - PhD student at SungKyunKwan University. Research on skill-based reinforcement learning, diffusion models, and embodied agents.">
+      <meta name="description" content="Woo Kyung Kim - PhD student at SungKyunKwan University. Research on skill-based RL, diffusion policy, and vision-language-action models.">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" type="image/svg+xml" href="favicon.svg">
       <!-- Open Graph -->
       <meta property="og:title" content="Woo Kyung Kim">
-      <meta property="og:description" content="PhD student at SungKyunKwan University. Research on skill-based reinforcement learning, diffusion models, and embodied agents.">
+      <meta property="og:description" content="PhD student at SungKyunKwan University. Research on skill-based RL, diffusion policy, and vision-language-action models.">
       <meta property="og:image" content="https://kwk2696.github.io/images/WooKyungKim.jpg">
       <meta property="og:url" content="https://kwk2696.github.io">
       <meta property="og:type" content="website">
@@ -128,12 +129,18 @@
 
       <hr class="section-divider">
       <h2 class="section-heading" id="publications">Conference Publications</h2>
+      <div class="tag-legend">
+        <span class="tag-legend-item"><span class="pub-tag tag-rl">RL</span> Reinforcement Learning</span>
+        <span class="tag-legend-item"><span class="pub-tag tag-sl">SL</span> Skill-based Policy Learning</span>
+        <span class="tag-legend-item"><span class="pub-tag tag-ep">EP</span> Embodied Planning</span>
+        <span class="tag-legend-item"><span class="pub-tag tag-aa">AA</span> Agentic AI</span>
+      </div>
       <div class="pub-section">
 
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/ICPAD_AAAI25.png" alt="ICPAD"></div>
               <div class="pub-card-content">
-                <a href=""><papertitle>In-Context Policy Adaptation via Cross-Domain Skill Diffusion</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-sl">SL</span><a href=""><papertitle>In-Context Policy Adaptation via Cross-Domain Skill Diffusion</papertitle></a></div>
                 <div class="authors"><a href="https://scholar.google.com/citations?user=O6L-PkgAAAAJ&hl=ko">Minjong Yoo</a>*, <strong>Woo Kyung Kim</strong>, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ&hl=ko">Honguk Woo</a></div>
                 <div class="venue"><em>AAAI</em>, 2025.02, Philadelphia, United States</div>
                 <p class="description">In this work, we present an in-context policy adaptation (ICPAD) framework designed for long-horizon multi-task environments, exploring diffusion-based skill learning techniques in cross-domain settings.</p>              </div>
@@ -142,7 +149,7 @@
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/LDuS_NeurIPS24.png" alt="LDuS"></div>
               <div class="pub-card-content">
-                <a href="https://openreview.net/pdf?id=UGlDVc0GTU"><papertitle>LLM-based Skill Diffusion for Zero-shot Policy Adaptation</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-sl">SL</span><a href="https://openreview.net/pdf?id=UGlDVc0GTU"><papertitle>LLM-based Skill Diffusion for Zero-shot Policy Adaptation</papertitle></a></div>
                 <div class="authors"><strong>Woo Kyung Kim</strong>*, <a href="https://scholar.google.com/citations?user=GhwtxtgAAAAJ">Youngseok Lee</a>, Jooyoung Kim, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ&hl=ko">Honguk Woo</a></div>
                 <div class="venue"><em>NeurIPS</em>, 2024.12, Vancouver, Canada</div>
                 <p class="description">In this paper, we present a novel LLM-based policy adaptation framework LDuS which leverages an LLM to guide the generation process of a skill diffusion model upon contexts specified in language, facilitating zero-shot skill-based policy adaptation to different contexts.</p>
@@ -152,7 +159,7 @@
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/IsCiL_NeurIPS24.png" alt="IsCiL"></div>
               <div class="pub-card-content">
-                <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/1f0832859514e53a0e4f229fc9b3a4a2-Paper-Conference.pdf"><papertitle>Incremental Learning of Retrievable Skills for Efficient Continual Task Adaptation</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-sl">SL</span><a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/1f0832859514e53a0e4f229fc9b3a4a2-Paper-Conference.pdf"><papertitle>Incremental Learning of Retrievable Skills for Efficient Continual Task Adaptation</papertitle></a></div>
                 <div class="authors"><a href="https://scholar.google.com/citations?user=llB3SucAAAAJ">Daehee Lee</a>*, <a href="https://scholar.google.com/citations?user=O6L-PkgAAAAJ&hl=ko">Minjong Yoo</a>, <strong>Woo Kyung Kim</strong>, <a href="https://scholar.google.com/citations?user=L4d1CjEAAAAJ">Wonje Choi</a>, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ&hl=ko">Honguk Woo</a></div>
                 <div class="venue"><em>NeurIPS</em>, 2024.12, Vancouver, Canada</div>
                 <p class="description">We introduce IsCiL, an adapter-based continual imitation learning framework that incrementally learns sharable skills from different demonstrations, enabling sample efficient task adaptation using the skills.</p>
@@ -162,7 +169,7 @@
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/ParIRL_IJCAI24.png" alt="ParIRL"></div>
               <div class="pub-card-content">
-                <a href="https://arxiv.org/pdf/2408.12110"><papertitle>Pareto Inverse Reinforcement Learning for Diverse Expert Policy Generation</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-rl">RL</span><a href="https://arxiv.org/pdf/2408.12110"><papertitle>Pareto Inverse Reinforcement Learning for Diverse Expert Policy Generation</papertitle></a></div>
                 <div class="authors"><strong>Woo Kyung Kim</strong>*, <a href="https://scholar.google.com/citations?user=O6L-PkgAAAAJ&hl=ko">Minjong Yoo</a>, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ&hl=ko">Honguk Woo</a></div>
                 <div class="venue"><em>IJCAI</em>, 2024.08, Jeju, Korea</div>
                 <p class="description">In this paper, we present Pareto inverse reinforcement learning (ParIRL) framework in which a Pareto policy set corresponding to the best compromise solutions over multi-objectives can be induced.</p>
@@ -172,7 +179,7 @@
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/DEDER_ICML24.png" alt="DEDER"></div>
               <div class="pub-card-content">
-                <a href="https://openreview.net/pdf?id=M4Htd52HMH"><papertitle>Embodied CoT Distillation From LLM To Off-the-shelf Agents</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-ep">EP</span><a href="https://openreview.net/pdf?id=M4Htd52HMH"><papertitle>Embodied CoT Distillation From LLM To Off-the-shelf Agents</papertitle></a></div>
                 <div class="authors"><a href="https://scholar.google.com/citations?user=L4d1CjEAAAAJ">Wonje Choi</a>*, <strong>Woo Kyung Kim</strong>, <a href="https://scholar.google.com/citations?user=O6L-PkgAAAAJ">Minjong Yoo</a>, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ">Honguk Woo</a></div>
                 <div class="venue"><em>ICML</em>, 2024.07, Wien, Austria</div>
                 <p class="description">We present DEDER, a framework for decomposing and distilling the embodied reasoning capabilities from large language models (LLMs) to efficient, small language model (sLM)-based policies.</p>
@@ -182,7 +189,7 @@
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/DuSkill_AAAI24.png" alt="DuSkill"></div>
               <div class="pub-card-content">
-                <a href="https://arxiv.org/pdf/2403.00225"><papertitle>Robust Policy Learning via Offline Skill Diffusion</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-sl">SL</span><a href="https://arxiv.org/pdf/2403.00225"><papertitle>Robust Policy Learning via Offline Skill Diffusion</papertitle></a></div>
                 <div class="authors"><strong>Woo Kyung Kim</strong>*, <a href="https://scholar.google.com/citations?user=O6L-PkgAAAAJ">Minjong Yoo</a>, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ">Honguk Woo</a></div>
                 <div class="venue"><em>AAAI</em>, 2024.02, Vancouver, Canada</div>
                 <p class="description">We present a novel offline skill learning (DuSkill) framework which employs a guided Diffusion model to generate versatile skills extended from the limited skills in datasets, thereby enhancing the robustness of policy learning for tasks in different domains.</p>
@@ -192,7 +199,7 @@
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/ConPE_NeurIPS23.png" alt="ConPE"></div>
               <div class="pub-card-content">
-                <a href="https://openreview.net/pdf?id=Ny3GcHLyzj"><papertitle>Efficient Policy Adaptation with Contrastive Prompt Ensemble for Embodied Agents</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-ep">EP</span><a href="https://openreview.net/pdf?id=Ny3GcHLyzj"><papertitle>Efficient Policy Adaptation with Contrastive Prompt Ensemble for Embodied Agents</papertitle></a></div>
                 <div class="authors"><a href="https://scholar.google.com/citations?user=L4d1CjEAAAAJ">Wonje Choi</a>*, <strong>Woo Kyung Kim</strong>, SeungHyun Kim, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ">Honguk Woo</a></div>
                 <div class="venue"><em>NeurIPS</em>, 2023.12, New Orleans, United States</div>
                 <p class="description">We present a novel contrastive prompt ensemble (ConPE) framework which utilizes a pretrained vision-language model and a set of visual prompts, thus enables efficient policy learning and adaptation upon environmental and physical changes encountered by embodied agents.</p>
@@ -202,7 +209,7 @@
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/OnIS_ICML23.png" alt="OnIS"></div>
               <div class="pub-card-content">
-                <a href="https://proceedings.mlr.press/v202/shin23d/shin23d.pdf"><papertitle>One-shot Imitation in a Non-stationary Environment via Multi-modal Skill</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-sl">SL</span><a href="https://proceedings.mlr.press/v202/shin23d/shin23d.pdf"><papertitle>One-shot Imitation in a Non-stationary Environment via Multi-modal Skill</papertitle></a></div>
                 <div class="authors"><a href="https://jsw7460.github.io/">Sangwoo Shin</a>*, <a href="https://scholar.google.com/citations?user=llB3SucAAAAJ">Daehee Lee</a>, <a href="https://scholar.google.com/citations?user=O6L-PkgAAAAJ">Minjong Yoo</a>, <strong>Woo Kyung Kim</strong>, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ">Honguk Woo</a></div>
                 <div class="venue"><em>ICML</em>, 2023.07, Honolulu, United States</div>
                 <p class="description">In this paper, we explore the compositionality of complex tasks, and present a novel skill-based imitation learning (OnIS) framework enabling one-shot imitation and zero-shot adaptation.</p>
@@ -218,7 +225,7 @@
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/A2D2_ESWA.png" alt="A2D2"></div>
               <div class="pub-card-content">
-                <a href="https://www.sciencedirect.com/science/article/pii/S0957417425041090"><papertitle>Aspect-Augmented Distillation of Task-Oriented Dialogues to Small Language Models</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-aa">AA</span><a href="https://www.sciencedirect.com/science/article/pii/S0957417425041090"><papertitle>Aspect-Augmented Distillation of Task-Oriented Dialogues to Small Language Models</papertitle></a></div>
                 <div class="authors">Jongmoon Jun, <strong>Woo Kyung Kim</strong>, Hyunseong Na, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ">Honguk Woo</a>, Jeehyeong Kim</div>
                 <div class="venue"><em>Expert Systems with Applications</em>, 2025.03. Volume 302, Page 130494</div>
                 <p class="description">We present A2D2, an aspect-augmented dialogue distillation framework designed to transfer capabilities from larger language models to smaller ones for task-oriented dialogue systems, incorporating human aspect-aware capabilities while maintaining task requirements.</p>
@@ -228,7 +235,7 @@
             <div class="pub-card">
               <div class="pub-card-img"><img src="images/Repot_IEEE.png" alt="Repot"></div>
               <div class="pub-card-content">
-                <a href="https://ieeexplore.ieee.org/abstract/document/9599665/"><papertitle>Repot: Transferable Reinforcement Learning for Quality-Centric Networked Monitoring in Various Environments</papertitle></a>
+                <div class="pub-title-row"><span class="pub-tag tag-rl">RL</span><a href="https://ieeexplore.ieee.org/abstract/document/9599665/"><papertitle>Repot: Transferable Reinforcement Learning for Quality-Centric Networked Monitoring in Various Environments</papertitle></a></div>
                 <div class="authors"><a href="https://scholar.google.com/citations?user=GhwtxtgAAAAJ">Youngseok Lee</a>*, <strong>Woo Kyung Kim</strong>, Sung Hyun Choi, <a href="https://scholar.google.com/citations?user=Gaxjc7UAAAAJ">Honguk Woo</a></div>
                 <div class="venue"><em>IEEE Access</em>, 2023.11. Volume 9, Page 147280-147294</div>
                 <p class="description">In this paper, we present a transferable RL model Repot in which a policy trained in an easy-to-learn network environment can be readily adjusted in various target network environments.</p>
