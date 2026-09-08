@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <rect width="800" height="400" fill="#f2f4f7"/>
+  <rect x="8" y="8" width="784" height="384" fill="none" stroke="#d0d7de" stroke-width="4" stroke-dasharray="16 12" rx="16"/>
+  <text x="400" y="185" text-anchor="middle" font-family="Lato, Verdana, Helvetica, sans-serif" font-size="86" font-weight="700" fill="#5b6673">ASC</text>
+  <text x="400" y="245" text-anchor="middle" font-family="Lato, Verdana, Helvetica, sans-serif" font-size="34" font-weight="400" fill="#8a949f">AACL-IJCNLP 2026</text>
+</svg>
