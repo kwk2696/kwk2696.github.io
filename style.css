@@ -350,6 +350,35 @@ hr {
   padding-top: 12px;
 }
 
+/* Year groupings inside a publication list */
+.year-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 26px 0 14px;
+}
+
+.year-divider:first-child {
+  margin-top: 4px;
+}
+
+.year-divider span {
+  flex-shrink: 0;
+  font-family: 'Lato', Verdana, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-color);
+  opacity: 0.5;
+}
+
+.year-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--hr-color);
+}
+
 /* Publication category tags */
 .tag-legend {
   display: flex;
