@@ -4,6 +4,7 @@
       <meta charset="utf-8">
       <title>Blog - Woo Kyung Kim</title>
       <meta name="author" content="Woo Kyung Kim">
+      <meta name="description" content="Blog by Woo Kyung Kim - notes on robotics, reinforcement learning, vision-language-action models, and building real robot systems.">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="icon" type="image/svg+xml" href="favicon.svg">
       <link rel="stylesheet" type="text/css" href="style.css">
@@ -30,12 +31,53 @@
 
     <div class="blog-container">
       <h1>Blog</h1>
-      <ul class="post-list">
-        <li>
-          <div class="post-date">2026-02-16</div>
-          <a class="post-title" href="blog/sample-post.html">First Post: Welcome to My Blog</a>
+      <div class="tag-filter" id="tag-filter"></div>
+      <ul class="post-list" id="post-list">
+        <li data-tags="robosynapse ros2">
+          <div class="post-date">2026-09-19</div>
+          <a class="post-title" href="blog/control-server-ros2.html">[Robosynapse] Control Server: Docker 위에 ROS2 올리기</a>
+          <div class="post-tags"><span class="tag">robosynapse</span><span class="tag">ros2</span></div>
         </li>
       </ul>
+      <script>
+        (function() {
+          var filterBox = document.getElementById('tag-filter');
+          var posts = Array.prototype.slice.call(
+            document.querySelectorAll('#post-list li[data-tags]'));
+
+          var tags = [];
+          posts.forEach(function(post) {
+            post.getAttribute('data-tags').split(/\s+/).forEach(function(t) {
+              if (t && tags.indexOf(t) === -1) tags.push(t);
+            });
+          });
+          tags.sort();
+
+          function select(tag) {
+            Array.prototype.forEach.call(filterBox.children, function(btn) {
+              btn.classList.toggle('active', btn.getAttribute('data-tag') === tag);
+            });
+            posts.forEach(function(post) {
+              var postTags = post.getAttribute('data-tags').split(/\s+/);
+              post.style.display =
+                (tag === 'all' || postTags.indexOf(tag) !== -1) ? '' : 'none';
+            });
+          }
+
+          function makeButton(tag, label) {
+            var btn = document.createElement('span');
+            btn.className = 'tag';
+            btn.setAttribute('data-tag', tag);
+            btn.textContent = label;
+            btn.addEventListener('click', function() { select(tag); });
+            filterBox.appendChild(btn);
+          }
+
+          makeButton('all', 'All');
+          tags.forEach(function(t) { makeButton(t, t); });
+          select('all');
+        })();
+      </script>
     </div>
     <footer class="site-footer">
       &copy; 2026 Woo Kyung Kim. All rights reserved.
