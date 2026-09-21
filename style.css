@@ -812,6 +812,12 @@ hr {
   margin-bottom: 0;
 }
 
+.comments-section {
+  margin-top: 48px;
+  padding-top: 8px;
+  border-top: 1px solid var(--hr-color);
+}
+
 .post-content a.back-link {
   display: inline-block;
   margin-top: 32px;
