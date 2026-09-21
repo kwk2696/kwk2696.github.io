@@ -61,6 +61,10 @@
             .topo-s { fill: var(--text-color); opacity: 0.7; font-size: 11.5px; }
             .topo-line { stroke: var(--text-color); opacity: 0.45; stroke-width: 1.5; }
             .topo-l { fill: var(--text-color); opacity: 0.75; font-size: 11px; }
+            .topo-ip {
+              fill: var(--text-color); opacity: 0.55; font-size: 10.5px;
+              font-family: 'SF Mono', Menlo, Consolas, monospace;
+            }
           </style>
           <defs>
             <marker id="topo-arrow" viewBox="0 0 10 10" refX="9" refY="5"
@@ -72,18 +76,18 @@
 
           <g font-family="Lato, Verdana, Helvetica, sans-serif" text-anchor="middle">
             <rect class="topo-box" x="5" y="48" width="190" height="112" rx="8" />
-            <text class="topo-t" x="100" y="97">Inference Server</text>
-            <text class="topo-s" x="100" y="118">VLA 정책 추론 · Server 2</text>
+            <text class="topo-t" x="100" y="84">Inference Server</text>
+            <text class="topo-s" x="100" y="106">VLA 정책 추론</text>
 
             <rect class="topo-box-accent" x="265" y="48" width="190" height="112" rx="8" />
-            <text class="topo-t" x="360" y="80">Control Server</text>
-            <text class="topo-s" x="360" y="100">ROS2 Humble · Docker</text>
-            <text class="topo-s" x="360" y="117">ur_robot_driver · MoveIt</text>
-            <text class="topo-s" x="360" y="134">172.16.0.10 · Server 1</text>
+            <text class="topo-t" x="360" y="84">Control Server</text>
+            <text class="topo-s" x="360" y="106">ROS2 Humble · Docker</text>
+            <text class="topo-ip" x="360" y="134">172.16.0.10</text>
 
             <rect class="topo-box" x="525" y="48" width="190" height="112" rx="8" />
-            <text class="topo-t" x="620" y="97">Robot</text>
-            <text class="topo-s" x="620" y="118">UR7e 172.16.0.3 · Piper</text>
+            <text class="topo-t" x="620" y="84">Robot</text>
+            <text class="topo-s" x="620" y="106">UR7e · Piper</text>
+            <text class="topo-ip" x="620" y="134">172.16.0.3</text>
 
             <line class="topo-line" x1="200" y1="104" x2="259" y2="104"
                   marker-end="url(#topo-arrow)" />
@@ -109,14 +113,6 @@
         USB-CAN 어댑터처럼 선으로 연결되는 장치들이 전부 여기에 달리기 때문입니다. 반면
         Inference Server는 VLA 모델을 올릴 GPU만 있으면 되고 로봇과 같은 공간에 있을 이유가
         없습니다. 연구실 공용 GPU 서버일 수도, 클라우드 인스턴스일 수도 있습니다.
-      </p>
-      <p>
-        나눠서 얻는 것도 분명합니다. 모델을 교체하거나 추론 서버가 OOM으로 죽어도 로봇
-        드라이버는 그대로 살아 있고, GPU 한 대를 여러 로봇이 나눠 쓸 수도 있습니다.
-        다만 이 글의 구성은 <strong>두 서버가 같은 LAN에 있다고 가정</strong>합니다.
-        ROS2의 DDS는 같은 네트워크 안에서 노드를 찾는 방식이라, 추론 서버를 정말 원격이나
-        클라우드에 두려면 DDS를 인터넷 너머로 그대로 흘리는 대신 별도의 통신 계층을 두는
-        편이 낫습니다.
       </p>
 
       <h2>0. 왜 Docker 위에 ROS2인가</h2>
