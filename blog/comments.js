@@ -11,10 +11,7 @@
   var REPO = 'kwk2696/kwk2696.github.io';
   var REPO_ID = 'R_kgDOM581TA';
   var CATEGORY = 'Announcements';
-  var CATEGORY_ID = '';   // fill in from giscus.app
-
-  // Until the category is configured, render nothing rather than a broken widget.
-  if (!CATEGORY_ID) return;
+  var CATEGORY_ID = 'DIC_kwDOM581TM4DGFL-';
 
   var container = document.querySelector('.post-content');
   if (!container) return;
@@ -52,7 +49,7 @@
   script.setAttribute('data-strict', '1');
   script.setAttribute('data-reactions-enabled', '1');
   script.setAttribute('data-emit-metadata', '0');
-  script.setAttribute('data-input-position', 'top');
+  script.setAttribute('data-input-position', 'bottom');
   script.setAttribute('data-theme', currentTheme());
   script.setAttribute('data-lang', 'ko');
   script.setAttribute('crossorigin', 'anonymous');
