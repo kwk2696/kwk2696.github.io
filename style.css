@@ -597,7 +597,7 @@ hr {
 
 /* Blog styles */
 .blog-container {
-  max-width: 800px;
+  max-width: 720px;
   margin: 20px auto;
   padding: 0 20px;
 }
@@ -615,7 +615,7 @@ hr {
 }
 
 .post-list li {
-  padding: 16px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--hr-color);
 }
 
@@ -631,8 +631,10 @@ hr {
 }
 
 .post-list .post-title {
-  font-size: 16px;
+  display: inline-block;
+  font-size: 18px;
   font-weight: 700;
+  line-height: 1.45;
 }
 
 /* Blog tags */
@@ -647,7 +649,7 @@ hr {
 }
 
 .post-list .post-tags {
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .post-list .post-tags .tag {
@@ -658,12 +660,14 @@ hr {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 .tag-filter .tag {
   cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+  user-select: none;
+  padding: 4px 12px;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .tag-filter .tag:hover {
@@ -676,89 +680,110 @@ hr {
   color: #ffffff;
 }
 
-.post-content .post-tags {
-  margin: -24px 0 32px;
-}
-
 .post-content .post-tags .tag {
   margin-right: 6px;
 }
 
 .post-content {
-  max-width: 800px;
+  max-width: 720px;
   margin: 20px auto;
   padding: 0 20px;
-  line-height: 1.8;
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+/* Post header: title, date, tags, then one divider */
+.post-header {
+  margin-bottom: 40px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--hr-color);
 }
 
 .post-content h1 {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 26px;
+  font-size: 30px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
   color: var(--name-color);
-  margin-bottom: 8px;
+  margin: 0 0 14px;
 }
 
 .post-content .post-meta {
   font-size: 13px;
   color: var(--text-color);
   opacity: 0.6;
-  margin-bottom: 32px;
+  margin: 0;
+}
+
+.post-header .post-tags {
+  margin-top: 12px;
 }
 
 .post-content p {
-  margin-bottom: 16px;
-  line-height: 1.8;
+  margin-bottom: 18px;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* The global 14px rules on a/strong/p would shrink text inside a post. */
+.post-content a,
+.post-content strong,
+.post-content li {
+  font-size: inherit;
 }
 
 .post-content h2 {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: 21px;
   color: var(--name-color);
-  margin: 36px 0 12px;
-  padding-bottom: 6px;
+  margin: 44px 0 14px;
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--hr-color);
 }
 
 .post-content h3 {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   color: var(--name-color);
-  margin: 28px 0 10px;
+  margin: 30px 0 10px;
 }
 
 .post-content ul,
 .post-content ol {
-  margin: 0 0 16px 24px;
-  line-height: 1.8;
+  margin: 0 0 18px 22px;
+  line-height: inherit;
 }
 
 .post-content li {
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .post-content code {
   font-family: 'SF Mono', Menlo, Consolas, monospace;
-  font-size: 13px;
+  font-size: 0.88em;
   background-color: var(--pill-bg);
   border: 1px solid var(--pill-border);
   border-radius: 4px;
   padding: 1px 5px;
 }
 
+/* Code block: the title sits in its own bar, only the code scrolls. */
 .post-content pre {
   background-color: var(--section-bg);
   border: 1px solid var(--hr-color);
   border-radius: 8px;
-  padding: 14px 16px;
-  margin: 0 0 16px;
-  overflow-x: auto;
+  margin: 0 0 20px;
+  overflow: hidden;
   line-height: 1.6;
 }
 
 .post-content pre code {
+  display: block;
+  padding: 14px 16px;
+  overflow-x: auto;
   background: none;
   border: none;
-  padding: 0;
+  border-radius: 0;
   font-size: 13px;
 }
 
@@ -796,32 +821,83 @@ hr {
   font-family: 'SF Mono', Menlo, Consolas, monospace;
   font-size: 12px;
   color: var(--text-color);
-  opacity: 0.6;
-  margin-bottom: 4px;
+  opacity: 0.7;
+  padding: 8px 16px;
+  background-color: var(--pill-bg);
+  border-bottom: 1px solid var(--hr-color);
 }
 
 .post-content blockquote {
-  margin: 0 0 16px;
-  padding: 8px 16px;
+  margin: 0 0 20px;
+  padding: 12px 18px;
   border-left: 3px solid var(--link-color);
   background-color: var(--section-bg);
   border-radius: 0 8px 8px 0;
 }
 
-.post-content blockquote p {
+.post-content blockquote p:last-child {
   margin-bottom: 0;
 }
 
+.post-content figure.diagram {
+  margin: 4px 0 26px;
+}
+
+.post-content figure.diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.post-content figcaption {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-color);
+  opacity: 0.65;
+}
+
 .comments-section {
-  margin-top: 48px;
-  padding-top: 8px;
+  margin-top: 56px;
+  padding-top: 28px;
   border-top: 1px solid var(--hr-color);
+}
+
+/* The section already has a rule above it; don't draw a second one. */
+.comments-section h2 {
+  margin: 0 0 18px;
+  padding-bottom: 0;
+  border-bottom: none;
+  font-size: 18px;
 }
 
 .post-content a.back-link {
   display: inline-block;
   margin-top: 32px;
   font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .post-content {
+    font-size: 15px;
+  }
+
+  .post-content h1 {
+    font-size: 24px;
+  }
+
+  .post-content h2 {
+    font-size: 19px;
+  }
+
+  .post-content pre code {
+    padding: 12px;
+    font-size: 12px;
+  }
+
+  .post-list .post-title {
+    font-size: 16px;
+  }
 }
 
 /* Theme toggle button */
