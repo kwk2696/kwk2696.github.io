@@ -26,11 +26,11 @@ head: <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/hi
 <!--:en-->
         <h1>[Robosynapse] Control Server: Running ROS2 on Docker</h1>
 <!--:/en-->
-        <div class="post-meta-row">
-          <div class="post-meta">2026-09-19</div>
+        <div class="post-meta">2026-09-19</div>
+        <div class="post-tags">
+          <span class="tag">robosynapse</span><span class="tag">ros2</span>
           {{SWITCH}}
         </div>
-        <div class="post-tags"><span class="tag">robosynapse</span><span class="tag">ros2</span></div>
       </header>
 
 <!--:ko-->
@@ -60,9 +60,9 @@ head: <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/hi
 
       <p>
         The overall shape is simple. The control server runs the robot driver and
-        MoveIt inside a ROS2 Humble container, and relays commands from the inference
-        server above it, where the VLA model runs. The two servers may share one
-        machine or sit on separate ones.
+        MoveIt inside a ROS2 Humble container, and passes commands down to the robot
+        from the inference server above it, where the VLA model runs. The two servers
+        may share one machine or sit on separate ones.
       </p>
 <!--:/en-->
 
@@ -196,7 +196,7 @@ head: <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/hi
 
       <h3>1-1. Starting the ROS2 Humble container</h3>
       <p>
-        We share the X11 socket so GUI tools like RViz work inside the container, and
+        Share the X11 socket so GUI tools like RViz work inside the container, and
         start it with <code>--net=host</code> for DDS communication.
       </p>
 <!--:/en-->
@@ -215,6 +215,12 @@ docker run -it \
     --device /dev/input:/dev/input \
     osrf/ros:humble-desktop-full
 
+<!--:ko-->
+# 이후 재사용
+<!--:/ko-->
+<!--:en-->
+# reusing it later
+<!--:/en-->
 docker start ros2_humble
 docker exec -it ros2_humble /ros_entrypoint.sh bash</code></pre>
 
@@ -233,7 +239,12 @@ docker exec -it ros2_humble /ros_entrypoint.sh bash</code></pre>
 <!--:/en-->
       <pre><span class="code-title">ROS2 UR Package Install</span><code class="language-bash">sudo apt update
 sudo apt install -y ros-humble-ur
-sudo apt install -y ros-humble-ros2controlcli</code></pre>
+<!--:ko-->
+sudo apt install -y ros-humble-ros2controlcli   # force control 용</code></pre>
+<!--:/ko-->
+<!--:en-->
+sudo apt install -y ros-humble-ros2controlcli   # for force control</code></pre>
+<!--:/en-->
 <!--:ko-->
       <p>
         주의할 점: 이 패키지들은 컨테이너 내부 파일시스템(<code>/opt/ros/humble/...</code>)에 설치되므로
@@ -263,7 +274,12 @@ sudo apt install -y ros-humble-ros2controlcli</code></pre>
       </p>
 <!--:/en-->
       <pre><span class="code-title">Robot network</span><code class="language-bash">sudo ip addr add 172.16.0.10/24 dev enp1s0
-ip -br addr</code></pre>
+<!--:ko-->
+ip -br addr   # 확인</code></pre>
+<!--:/ko-->
+<!--:en-->
+ip -br addr   # check</code></pre>
+<!--:/en-->
 <!--:ko-->
       <p>
         위 방식은 재부팅하면 사라지므로, netplan으로 고정해 둡니다.
@@ -361,7 +377,14 @@ ros2 launch ur_moveit_config ur_moveit.launch.py \
   -v $HOME/workspace:/root/workspace \
   osrf/ros:humble-desktop-full
 
-bin/control_server/create_docker.sh piper</code></pre>
+<!--:ko-->
+# robosynapse에서는 스크립트 한 줄로:
+bin/control_server/create_docker.sh piper   # 컨테이너 ros2_humble_piper, domain=42</code></pre>
+<!--:/ko-->
+<!--:en-->
+# in robosynapse this is a single script:
+bin/control_server/create_docker.sh piper   # container ros2_humble_piper, domain=42</code></pre>
+<!--:/en-->
 
 <!--:ko-->
       <h3>2-2. piper_ros 빌드</h3>
@@ -369,20 +392,40 @@ bin/control_server/create_docker.sh piper</code></pre>
 <!--:en-->
       <h3>2-2. Building piper_ros</h3>
 <!--:/en-->
-      <pre><span class="code-title">ROS2 Piper Package Install</span><code class="language-bash">sudo chown -R $USER:$USER ~/workspace
+<!--:ko-->
+      <pre><span class="code-title">ROS2 Piper Package Install</span><code class="language-bash"># 1. Piper ROS 패키지 clone
+<!--:/ko-->
+<!--:en-->
+      <pre><span class="code-title">ROS2 Piper Package Install</span><code class="language-bash"># 1. clone the Piper ROS package
+<!--:/en-->
+sudo chown -R $USER:$USER ~/workspace
 git clone -b humble https://github.com/agilexrobotics/piper_ros.git ~/workspace/piper_ros
-ls ~/workspace/piper_ros
+<!--:ko-->
+ls ~/workspace/piper_ros   # src/ can_activate.sh find_all_can_port.sh 보이면 OK
 
+# 2. 의존 패키지 설치
+<!--:/ko-->
+<!--:en-->
+ls ~/workspace/piper_ros   # OK if src/ can_activate.sh find_all_can_port.sh show up
+
+# 2. install dependencies
+<!--:/en-->
 apt update &amp;&amp; apt install -y python3-pip can-utils ethtool \
   ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-controller-manager
 pip3 install python-can scipy piper_sdk
 
+# 3. colcon build
 cd /root/workspace/piper_ros
 source /opt/ros/humble/setup.bash
 colcon build
 source install/setup.bash
 
-ros2 pkg list | grep piper</code></pre>
+<!--:ko-->
+ros2 pkg list | grep piper   # 확인</code></pre>
+<!--:/ko-->
+<!--:en-->
+ros2 pkg list | grep piper   # check</code></pre>
+<!--:/en-->
 
 <!--:ko-->
       <h3>2-3. CAN 통신 활성화</h3>
@@ -401,10 +444,18 @@ ros2 pkg list | grep piper</code></pre>
       <pre><span class="code-title">CAN communication</span><code class="language-bash">cd /root/workspace/piper_ros
 apt install -y iproute2
 bash find_all_can_port.sh
-bash can_activate.sh can_piper0 1000000
+<!--:ko-->
+bash can_activate.sh can_piper0 1000000   # 인터페이스 이름 + bitrate
 
-ip -br link show can_piper0
-candump can_piper0</code></pre>
+ip -br link show can_piper0   # UP 확인
+candump can_piper0            # 팔이 프레임을 쏘는지 확인 (Ctrl+C)</code></pre>
+<!--:/ko-->
+<!--:en-->
+bash can_activate.sh can_piper0 1000000   # interface name + bitrate
+
+ip -br link show can_piper0   # confirm it is UP
+candump can_piper0            # confirm the arm is sending frames (Ctrl+C)</code></pre>
+<!--:/en-->
 <!--:ko-->
       <p>
         컨테이너 안에서 뭔가 이상하면 호스트에서도 검증해 볼 수 있습니다:
@@ -417,7 +468,7 @@ candump can_piper0</code></pre>
       </p>
 <!--:/en-->
       <pre><code class="language-bash">lsusb | grep -i can
-ip -d link show can_piper0 | grep bitrate
+ip -d link show can_piper0 | grep bitrate   # bitrate 1000000
 candump can_piper0</code></pre>
 
 <!--:ko-->
@@ -426,15 +477,23 @@ candump can_piper0</code></pre>
 <!--:en-->
       <h3>2-4. Launching the Piper driver and MoveIt</h3>
 <!--:/en-->
-      <pre><span class="code-title">Piper Driver Init &amp; MoveIt</span><code class="language-bash">cd /root/workspace/piper_ros
+      <pre><span class="code-title">Piper Driver Init &amp; MoveIt</span><code class="language-bash"># 1. piper driver
+cd /root/workspace/piper_ros
 source install/setup.bash
 source /root/workspace/robo-synapse/config/setup_env_container.sh
 ros2 launch piper start_single_piper.launch.py \
     can_port:=can_piper0 auto_enable:=true
 
+<!--:ko-->
+# 상태 확인
+<!--:/ko-->
+<!--:en-->
+# check the state
+<!--:/en-->
 ros2 topic list
 ros2 topic echo /joint_states_feedback
 
+# 2. moveit
 apt update &amp;&amp; apt install -y ros-humble-moveit
 ros2 launch piper_with_gripper_moveit demo.launch.py</code></pre>
 <!--:ko-->
@@ -490,8 +549,8 @@ ros2 launch piper_with_gripper_moveit demo.launch.py</code></pre>
       </ul>
       <p>
         The next post covers the
-        <a href="inference-server-vla.en.html">inference server (VLA) setup</a> that
-        sits on top of this control server.
+        <a href="inference-server-vla.html">inference server (VLA) setup</a> that sits
+        on top of this control server. It is currently only available in Korean.
       </p>
 
       <a class="back-link" href="../blog.html">&larr; Back to Blog</a>

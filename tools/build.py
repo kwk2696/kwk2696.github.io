@@ -144,10 +144,16 @@ def render(meta, segments, lang, src_name):
                 % (other, SITE, out_name(out, other)) for other in LANGS]
         alts.append('      <link rel="alternate" hreflang="x-default" href="%s/%s">'
                     % (SITE, out))
-        other = "en" if lang == "ko" else "ko"
-        target = os.path.basename(out_name(out, other))
-        switch = ('<a class="lang-switch" href="%s" hreflang="%s">%s</a>'
-                  % (target, other, LABEL[other]))
+        # Show both labels in a fixed order; the current one is not a link.
+        parts = []
+        for code in LANGS:
+            if code == lang:
+                parts.append('<span class="lang-current">%s</span>' % LABEL[code])
+            else:
+                parts.append('<a href="%s" hreflang="%s">%s</a>'
+                             % (os.path.basename(out_name(out, code)), code, LABEL[code]))
+        switch = ('<span class="lang-switch">%s</span>'
+                  % '<span class="lang-sep">/</span>'.join(parts))
     else:
         alts, switch = [], ""
 

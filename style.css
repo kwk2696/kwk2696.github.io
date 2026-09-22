@@ -899,12 +899,11 @@ hr {
   }
 }
 
-/* Language switch, shown in a post header next to the date */
-.post-meta-row {
+/* Language switch, sitting at the end of a post's tag row */
+.post-header .post-tags {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 6px;
 }
 
 .post-list .post-lang {
@@ -924,13 +923,22 @@ hr {
 }
 
 .lang-switch {
-  font-size: 12px;
+  margin-left: auto;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  padding: 3px 9px;
-  border: 1px solid var(--pill-border);
-  border-radius: 12px;
-  background-color: var(--pill-bg);
+  white-space: nowrap;
+}
+
+.lang-switch .lang-current {
+  color: var(--text-color);
+  opacity: 0.4;
+}
+
+.lang-switch .lang-sep {
+  color: var(--text-color);
+  opacity: 0.3;
+  margin: 0 3px;
 }
 
 .lang-switch:hover {

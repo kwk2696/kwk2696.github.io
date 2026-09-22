@@ -39,11 +39,11 @@
     <div class="post-content">
       <header class="post-header">
         <h1>[Robosynapse] Control Server: Running ROS2 on Docker</h1>
-        <div class="post-meta-row">
-          <div class="post-meta">2026-09-19</div>
-          <a class="lang-switch" href="control-server-ros2.html" hreflang="ko">KR</a>
+        <div class="post-meta">2026-09-19</div>
+        <div class="post-tags">
+          <span class="tag">robosynapse</span><span class="tag">ros2</span>
+          <span class="lang-switch"><a href="control-server-ros2.html" hreflang="ko">KR</a><span class="lang-sep">/</span><span class="lang-current">EN</span></span>
         </div>
-        <div class="post-tags"><span class="tag">robosynapse</span><span class="tag">ros2</span></div>
       </header>
 
       <p>
@@ -57,9 +57,9 @@
 
       <p>
         The overall shape is simple. The control server runs the robot driver and
-        MoveIt inside a ROS2 Humble container, and relays commands from the inference
-        server above it, where the VLA model runs. The two servers may share one
-        machine or sit on separate ones.
+        MoveIt inside a ROS2 Humble container, and passes commands down to the robot
+        from the inference server above it, where the VLA model runs. The two servers
+        may share one machine or sit on separate ones.
       </p>
 
       <figure class="diagram">
@@ -143,7 +143,7 @@
 
       <h3>1-1. Starting the ROS2 Humble container</h3>
       <p>
-        We share the X11 socket so GUI tools like RViz work inside the container, and
+        Share the X11 socket so GUI tools like RViz work inside the container, and
         start it with <code>--net=host</code> for DDS communication.
       </p>
       <pre><span class="code-title">ROS2 Docker Entry</span><code class="language-bash">xhost +local:root
@@ -161,6 +161,7 @@ docker run -it \
     --device /dev/input:/dev/input \
     osrf/ros:humble-desktop-full
 
+# reusing it later
 docker start ros2_humble
 docker exec -it ros2_humble /ros_entrypoint.sh bash</code></pre>
 
@@ -171,7 +172,7 @@ docker exec -it ros2_humble /ros_entrypoint.sh bash</code></pre>
       </p>
       <pre><span class="code-title">ROS2 UR Package Install</span><code class="language-bash">sudo apt update
 sudo apt install -y ros-humble-ur
-sudo apt install -y ros-humble-ros2controlcli</code></pre>
+sudo apt install -y ros-humble-ros2controlcli   # for force control</code></pre>
       <p>
         One caveat: these packages land in the container's own filesystem under
         <code>/opt/ros/humble/...</code>, so they disappear the moment you
@@ -186,7 +187,7 @@ sudo apt install -y ros-humble-ros2controlcli</code></pre>
         box.
       </p>
       <pre><span class="code-title">Robot network</span><code class="language-bash">sudo ip addr add 172.16.0.10/24 dev enp1s0
-ip -br addr</code></pre>
+ip -br addr   # check</code></pre>
       <p>
         That assignment is lost on reboot, so pin it down with netplan.
       </p>
@@ -243,23 +244,27 @@ ros2 launch ur_moveit_config ur_moveit.launch.py \
   -v $HOME/workspace:/root/workspace \
   osrf/ros:humble-desktop-full
 
-bin/control_server/create_docker.sh piper</code></pre>
+# in robosynapse this is a single script:
+bin/control_server/create_docker.sh piper   # container ros2_humble_piper, domain=42</code></pre>
 
       <h3>2-2. Building piper_ros</h3>
-      <pre><span class="code-title">ROS2 Piper Package Install</span><code class="language-bash">sudo chown -R $USER:$USER ~/workspace
+      <pre><span class="code-title">ROS2 Piper Package Install</span><code class="language-bash"># 1. clone the Piper ROS package
+sudo chown -R $USER:$USER ~/workspace
 git clone -b humble https://github.com/agilexrobotics/piper_ros.git ~/workspace/piper_ros
-ls ~/workspace/piper_ros
+ls ~/workspace/piper_ros   # OK if src/ can_activate.sh find_all_can_port.sh show up
 
+# 2. install dependencies
 apt update &amp;&amp; apt install -y python3-pip can-utils ethtool \
   ros-humble-ros2-control ros-humble-ros2-controllers ros-humble-controller-manager
 pip3 install python-can scipy piper_sdk
 
+# 3. colcon build
 cd /root/workspace/piper_ros
 source /opt/ros/humble/setup.bash
 colcon build
 source install/setup.bash
 
-ros2 pkg list | grep piper</code></pre>
+ros2 pkg list | grep piper   # check</code></pre>
 
       <h3>2-3. Bringing up CAN</h3>
       <p>
@@ -269,28 +274,31 @@ ros2 pkg list | grep piper</code></pre>
       <pre><span class="code-title">CAN communication</span><code class="language-bash">cd /root/workspace/piper_ros
 apt install -y iproute2
 bash find_all_can_port.sh
-bash can_activate.sh can_piper0 1000000
+bash can_activate.sh can_piper0 1000000   # interface name + bitrate
 
-ip -br link show can_piper0
-candump can_piper0</code></pre>
+ip -br link show can_piper0   # confirm it is UP
+candump can_piper0            # confirm the arm is sending frames (Ctrl+C)</code></pre>
       <p>
         If something looks wrong inside the container, you can verify from the host as
         well:
       </p>
       <pre><code class="language-bash">lsusb | grep -i can
-ip -d link show can_piper0 | grep bitrate
+ip -d link show can_piper0 | grep bitrate   # bitrate 1000000
 candump can_piper0</code></pre>
 
       <h3>2-4. Launching the Piper driver and MoveIt</h3>
-      <pre><span class="code-title">Piper Driver Init &amp; MoveIt</span><code class="language-bash">cd /root/workspace/piper_ros
+      <pre><span class="code-title">Piper Driver Init &amp; MoveIt</span><code class="language-bash"># 1. piper driver
+cd /root/workspace/piper_ros
 source install/setup.bash
 source /root/workspace/robo-synapse/config/setup_env_container.sh
 ros2 launch piper start_single_piper.launch.py \
     can_port:=can_piper0 auto_enable:=true
 
+# check the state
 ros2 topic list
 ros2 topic echo /joint_states_feedback
 
+# 2. moveit
 apt update &amp;&amp; apt install -y ros-humble-moveit
 ros2 launch piper_with_gripper_moveit demo.launch.py</code></pre>
       <blockquote><p>
@@ -317,8 +325,8 @@ ros2 launch piper_with_gripper_moveit demo.launch.py</code></pre>
       </ul>
       <p>
         The next post covers the
-        <a href="inference-server-vla.en.html">inference server (VLA) setup</a> that
-        sits on top of this control server.
+        <a href="inference-server-vla.html">inference server (VLA) setup</a> that sits
+        on top of this control server. It is currently only available in Korean.
       </p>
 
       <a class="back-link" href="../blog.html">&larr; Back to Blog</a>
