@@ -906,22 +906,6 @@ hr {
   gap: 6px;
 }
 
-.post-list .post-lang {
-  margin-left: 8px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 1px 7px;
-  border: 1px solid var(--pill-border);
-  border-radius: 10px;
-  background-color: var(--pill-bg);
-  vertical-align: 2px;
-}
-
-.post-list .post-lang:hover {
-  border-color: var(--link-color);
-}
-
 .lang-switch {
   margin-left: auto;
   font-size: 11px;
