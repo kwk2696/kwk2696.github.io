@@ -119,14 +119,14 @@ head: <meta property="og:title" content="Woo Kyung Kim">
 
         <div class="demo-card">
           <div class="demo-thumb natural">
-            <video controls muted loop playsinline preload="metadata" poster="images/orchestration_poster.jpg">
-              <source src="demos/orchestration_3cubes_take4_2026-09-21.mp4" type="video/mp4">
+            <video controls muted loop playsinline preload="metadata" poster="images/handover_poster.jpg">
+              <source src="demos/handover_annotated_2026-09-21.mp4" type="video/mp4">
             </video>
           </div>
           <div class="demo-body">
             <h3 class="demo-title"><a href="demo.html#cube-sort">Bimanual Cube Sorting</a></h3>
             <div class="demo-meta">2&times; AgileX Piper &middot; 2026.09.21</div>
-            <p class="demo-desc">Two Piper arms sorting three cubes onto plates, with the top-down camera and both wrist views shown side by side. Each arm runs in its own ROS domain under one shared workspace. An LLM turns instructions into a sequential program (Code-as-Policies); rule-based routing assigns arms and inserts arm-to-arm handovers, and orchestration decides what runs in parallel. Because these layers are separate, changing arm count or collision checks leaves the rest untouched.</p>
+            <p class="demo-desc">Two Piper arms sorting three cubes onto plates. The overlay shows the natural-language instruction, the program the LLM generated from it, and the per-arm schedule the orchestrator runs. Each arm runs in its own ROS domain under one shared workspace. An LLM turns instructions into a sequential program (Code-as-Policies); rule-based routing assigns arms and inserts arm-to-arm handovers, and orchestration decides what runs in parallel. Because these layers are separate, changing arm count or collision checks leaves the rest untouched.</p>
           </div>
         </div>
 
