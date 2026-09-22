@@ -1,0 +1,33 @@
+<!--@
+out: blog.html
+active: blog
+base: 
+lang: en
+title: Blog - Woo Kyung Kim
+desc: Blog by Woo Kyung Kim - notes on robotics, reinforcement learning, vision-language-action models, and building real robot systems.
+-->
+<!DOCTYPE html>
+<html lang="{{LANG}}">
+    <head>
+{{> head}}
+    </head>
+
+  <body>
+{{> nav}}
+
+    <div class="blog-container">
+      <h1>Blog</h1>
+      <div class="tag-filter" id="tag-filter"></div>
+      <ul class="post-list" id="post-list">
+        <li data-tags="robosynapse ros2">
+          <div class="post-date">2026-09-19</div>
+          <a class="post-title" href="blog/control-server-ros2.html">[Robosynapse] Control Server: Docker 위에 ROS2 올리기</a>
+          <a class="post-lang" href="blog/control-server-ros2.en.html" hreflang="en">EN</a>
+          <div class="post-tags"><span class="tag">robosynapse</span><span class="tag">ros2</span></div>
+        </li>
+      </ul>
+    </div>
+{{> footer}}
+    <script src="assets/tag-filter.js"></script>
+  </body>
+</html>

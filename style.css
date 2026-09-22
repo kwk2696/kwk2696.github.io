@@ -133,8 +133,7 @@ h2 {
   color: var(--text-color);
 }
 
-papertitle,
-.papertitle {
+papertitle {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -315,8 +314,7 @@ hr {
   justify-content: center;
 }
 
-.pub-card-content papertitle,
-.pub-card-content .papertitle {
+.pub-card-content papertitle {
   font-size: 15px;
   line-height: 1.4;
   margin-bottom: 6px;
@@ -449,8 +447,7 @@ hr {
   line-height: 1.4;
 }
 
-.pub-title-row papertitle,
-.pub-title-row .papertitle {
+.pub-title-row papertitle {
   display: inline;
   margin-bottom: 0;
 }
@@ -726,10 +723,15 @@ hr {
 }
 
 /* The global 14px rules on a/strong/p would shrink text inside a post. */
+/* The global 14px rules on a/strong/p would otherwise shrink post text. */
 .post-content a,
-.post-content strong,
+.post-content strong {
+  font-size: inherit;
+}
+
 .post-content li {
   font-size: inherit;
+  margin-bottom: 6px;
 }
 
 .post-content h2 {
@@ -752,10 +754,6 @@ hr {
 .post-content ol {
   margin: 0 0 18px 22px;
   line-height: inherit;
-}
-
-.post-content li {
-  margin-bottom: 6px;
 }
 
 .post-content code {
@@ -787,7 +785,8 @@ hr {
   font-size: 13px;
 }
 
-/* Syntax highlighting (highlight.js) — GitHub-flavored, theme-aware */
+/* Syntax highlighting (highlight.js), GitHub-flavored. These tokens are kept
+   separate from the site palette above so code colours can be tuned alone. */
 :root {
   --hl-comment: #6a737d;
   --hl-keyword: #d73a49;
@@ -898,6 +897,44 @@ hr {
   .post-list .post-title {
     font-size: 16px;
   }
+}
+
+/* Language switch, shown in a post header next to the date */
+.post-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.post-list .post-lang {
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 1px 7px;
+  border: 1px solid var(--pill-border);
+  border-radius: 10px;
+  background-color: var(--pill-bg);
+  vertical-align: 2px;
+}
+
+.post-list .post-lang:hover {
+  border-color: var(--link-color);
+}
+
+.lang-switch {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 9px;
+  border: 1px solid var(--pill-border);
+  border-radius: 12px;
+  background-color: var(--pill-bg);
+}
+
+.lang-switch:hover {
+  border-color: var(--link-color);
 }
 
 /* Theme toggle button */
@@ -1082,29 +1119,6 @@ hr {
 .demo-thumb.natural video {
   height: auto;
   object-fit: fill;
-}
-
-/* Play badge, only on cards that link out to a video */
-.demo-thumb.play::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 46px;
-  height: 46px;
-  margin: -23px 0 0 -23px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.55);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: 55% 50%;
-  background-size: 22px 22px;
-  transition: background-color 0.2s, transform 0.2s;
-}
-
-.demo-card:hover .demo-thumb.play::after {
-  background-color: rgba(0, 0, 0, 0.75);
-  transform: scale(1.08);
 }
 
 .demo-body {
