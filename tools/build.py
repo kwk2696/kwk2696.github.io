@@ -133,10 +133,79 @@ def expand_includes(text, seen=()):
     return INCLUDE_RE.sub(repl, text)
 
 
+DEMO_CARD_RE = re.compile(
+    r'^(?P<ind>[ \t]*)<div class="demo-card" id="(?P<id>[\w-]+)">\n'
+    r'(?P<body>.*?)'
+    r'^(?P=ind)</div>\n',
+    re.S | re.M)
+DEMO_META_RE = re.compile(r'class="demo-meta">(.*?)</div>', re.S)
+DEMO_TITLE_RE = re.compile(r'(<h3 class="demo-title">)(.*?)(</h3>)', re.S)
+HOME_DEMO_COUNT = 2
+
+
+def demo_date(body):
+    """Sort key from the trailing date in the card's meta line (YYYY.MM[.DD])."""
+    meta = DEMO_META_RE.search(body)
+    if not meta:
+        return (0, 0, 0)
+    tail = meta.group(1).split("&middot;")[-1].strip()
+    parts = tail.split(".")
+    if not all(p.strip().isdigit() for p in parts):
+        return (0, 0, 0)
+    nums = [int(p) for p in parts][:3]
+    return tuple(nums + [0] * (3 - len(nums)))
+
+
+def recent_demos():
+    """The newest demo cards from _src/demo.html, relinked for the home page.
+
+    The demos page is the single source; the home page preview is derived from
+    it at build time so the two can never drift apart.
+    """
+    path = os.path.join(SRC, "demo.html")
+    if not os.path.exists(path):
+        die("no _src/demo.html to take recent demos from")
+    cards = list(DEMO_CARD_RE.finditer(read(path)))
+    if not cards:
+        die("_src/demo.html has no demo cards")
+    cards.sort(key=lambda m: demo_date(m.group("body")), reverse=True)
+
+    out = []
+    for m in cards[:HOME_DEMO_COUNT]:
+        ind, anchor = m.group("ind"), m.group("id")
+        body, found = DEMO_TITLE_RE.subn(
+            lambda t: '%s<a href="demo.html#%s">%s</a>%s'
+                      % (t.group(1), anchor, t.group(2).strip(), t.group(3)),
+            m.group("body"), count=1)
+        if not found:
+            die("demo card %r has no <h3 class=\"demo-title\">" % anchor)
+        out.append('%s<div class="demo-card">\n%s%s</div>' % (ind, body, ind))
+    return "\n\n".join(out)
+
+
+def sort_demo_grid(page):
+    """Put the demo cards in newest-first order, whatever order the source uses.
+
+    The cards keep their existing slots, so the surrounding whitespace and the
+    rest of the page are untouched.
+    """
+    slots = list(DEMO_CARD_RE.finditer(page))
+    if len(slots) < 2:
+        return page
+    ordered = sorted(slots, key=lambda m: demo_date(m.group("body")), reverse=True)
+    out, last = [], 0
+    for slot, card in zip(slots, ordered):
+        out.append(page[last:slot.start()])
+        out.append(card.group(0))
+        last = slot.end()
+    out.append(page[last:])
+    return "".join(out)
+
+
 def render(meta, segments, lang, src_name):
     bilingual = meta.get("i18n", "no").lower() in ("yes", "true", "1")
     body = "".join(t for t, tag in segments if tag in (None, lang))
-    page = expand_includes(body)
+    page = sort_demo_grid(expand_includes(body))
 
     out = meta["out"]
     if bilingual:
@@ -165,6 +234,7 @@ def render(meta, segments, lang, src_name):
         "ALTLINKS": "\n".join(alts),
         "SWITCH": switch,
         "EXTRAHEAD": meta.get("head", ""),
+        "RECENT_DEMOS": recent_demos() if "{{RECENT_DEMOS}}" in page else "",
     }
     for item in NAV_ITEMS:
         values["NAV_" + item.upper()] = (
