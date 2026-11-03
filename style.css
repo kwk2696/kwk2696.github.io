@@ -1029,7 +1029,35 @@ hr {
   transform: translateY(-1px);
 }
 
+.skill-subgroups {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skill-sub {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.skill-sublabel {
+  flex-shrink: 0;
+  width: 120px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-color);
+  opacity: 0.65;
+}
+
 @media (max-width: 600px) {
+  .skill-sub {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .skill-sublabel {
+    width: auto;
+  }
   .skill-group {
     flex-direction: column;
     gap: 8px;
