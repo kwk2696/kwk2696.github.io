@@ -1,0 +1,337 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\input{glyphtounicode}
+% \hypersetup{
+%     colorlinks=true,
+%     linkcolor=blue,
+%     filecolor=magenta,
+%     urlcolor=blue,
+% }
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+\definecolor{RLgreen}{HTML}{0f9d58}
+\definecolor{SLpurple}{HTML}{9334e6}
+\definecolor{EPblue}{HTML}{12a4af}
+\definecolor{AAred}{HTML}{d93025}
+\newcommand{\RL}{\textbf{\textcolor{RLgreen}{[RL]}}}
+\newcommand{\SL}{\textbf{\textcolor{SLpurple}{[SL]}}}
+\newcommand{\EP}{\textbf{\textcolor{EPblue}{[EP]}}}
+\newcommand{\Aa}{\textbf{\textcolor{AAred}{[AA]}}}
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+\begin{center}
+    \textbf{\Huge \scshape Woo Kyung Kim} \\
+    \vspace{2mm}
+    {Email: kwk2696@g.skku.edu} \\
+    % \vspace{1mm}
+    {Website: \href{https://kwk2696.github.io}{https://kwk2696.github.io}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+      \resumeSubheading
+      {SungKyunKwan University}{Gyeonggi-do, Korea}
+      {Ph.D in Computer Science and Engineering}{Sep. 2022 -- Current}
+      \resumeItemListStart
+        \resumeItem{Major GPA:4.15/4.5}
+        \resumeItem{Advisor: Prof. Honguk Woo}
+      \resumeItemListEnd
+
+      \resumeSubheading
+      {SungKyunKwan University}{Gyeonggi-do, Korea}
+      {Master of Computer Science and Engineering}{Mar. 2021 -- Aug. 2022}
+      \resumeItemListStart
+        \resumeItem{Major GPA:4.5/4.5}
+        \resumeItem{Advisor: Prof. Honguk Woo}
+      \resumeItemListEnd
+
+      \resumeSubheading
+      {SungKyunKwan University}{Gyeonggi-do, Korea}
+      {Bachelor of Computer Science and Engineering}{Mar. 2017 -- Feb. 2021}
+      \resumeItemListStart
+        \resumeItem{Major GPA:4.41/4.5, Total  GPA:4.26/4.5}
+        % \resumeItem{Related Coursework:}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Korean Minjok Leadership Academy}{Gangwon-do, Korea}
+      {High School}{Mar. 2014 -- Feb 2017}
+    \resumeSubHeadingListEnd
+
+%-----------Skill and Interests-----------
+\section{Publications}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    \vspace{1mm}
+    \RL: Reinforcement Learning;
+    \SL : Skill-based Policy Learning;
+    \EP : Embodied Planning;
+    \Aa : Agentic AI; \\
+    \vspace{1.5mm}
+
+    \textbf{[c.13]} \SL \ {Skill-Adaptive Noise Scheduling for Diffusion Policies} \\
+    {\textbf{Woo Kyung Kim}, Gwangpyo Yoo, Eunyoung Park, Honguk Woo} \\
+    {Conference on Neural Information Processing Systems (NeurIPS), 2026.12} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.12]} \Aa \ {\href{}{}Code-as-Auditor: Executable Compliance Reasoning via Regulation-to-Code} \\
+    {Jisoo Kim, Taeyoon Kwack, Jinwoo Jang, \textbf{Woo Kyung Kim}, Honguk Woo} \\
+    {ACM International Conference on Information and Knowledge Management (CIKM), 2026.11} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.11]} \EP \ {Amortizing Self-Correction for Continual Embodied Adaptation} \\
+    {\textbf{Woo Kyung Kim}, Jooyoung Kim, Minjong Yoo, Honguk Woo} \\
+    {Asia-Pacific Chapter of the Association for Computational Linguistics (AACL), 2026.11} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.10]} \Aa \ {\href{}{}MA-Mesh: Resilient Multi-Agent Collaboration via Role-based Self-Healing} \\
+    {Junyong Lee*, \textbf{Woo Kyung Kim}*, Honguk Woo} \\
+    {Conference on Empirical Methods in Natural Language Processing (EMNLP), 2026.10} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.09]} \RL \ {\href{}{}Knothe-Rosenblatt Quantile Regression for Risk-sensitive Multi-objective Reinforcement Learning} \\
+    {Gwangpyo Yoo, \textbf{Woo Kyung Kim}, Honguk Woo} \\
+    {International Conference on Machine Learning (ICML), 2026.07} \\
+    \vspace{1.5mm}
+
+    \textbf{[j.02]} \Aa \ {\href{}{}Aspect-Augmented Distillation of Task-Oriented Dialogues to Small Language models} \\
+    {Jongmoon Jun, \textbf{Woo Kyung Kim}, Hyunseong Na, Honguk Woo, Jeehyeong Kim} \\
+    {Expert System with Applications, vol 302, pp. 130494, 2025.11} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.08]} \SL \ {\href{}{}In-context Policy Adaptation via Cross-domain Skill Diffusion} \\
+    {Minjong Yoo, \textbf{Woo Kyung Kim}, Honguk Woo} \\
+    {AAAI Conference on Artificial Intelligence (AAAI), 2025.02} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.07]} \SL \ {LLM-based Skill Diffusion for Zero-shot Policy Adaptation} \\
+    {\textbf{Woo Kyung Kim}, Youngseok Lee, Jooyong Kim, Honguk Woo} \\
+    {Conference on Neural Information Processing Systems (NeurIPS), 2024.12} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.06]} \SL \ {Incremental Learning of Retrievable Skills for Efficient Continual Task Adaptation} \\
+    {Daehee Lee, Minjong Yoo, \textbf{Woo Kyung Kim}, Wonje Choi, Honguk Woo} \\
+    {Conference on Neural Information Processing Systems (NeurIPS), 2024.12} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.05]} \RL \ {Pareto Inverse Reinforcement Learning for Diverse Expert Policy Generation} \\
+    {\textbf{Woo Kyung Kim}, Minjong Yoo, Honguk Woo} \\
+    {International Joint Conference on Artificial Intelligence (IJCAI), 2024.08} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.04]} \EP \ {Embodied CoT Distillation From LLM to Off-the-shelf Agents} \\
+    {Wonje Choi, \textbf{Woo Kyung Kim}, Minjong Yoo, Honguk Woo} \\
+    {International Conference on Machine Learning (ICML), 2024.07} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.03]} \SL \ {Robust Policy Learning via Offline Skill Diffusion} \\
+    {\textbf{Woo Kyung Kim}, Minjong Yoo, Honguk Woo} \\
+    {AAAI Conference on Artificial Intelligence (AAAI), 2024.02} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.02]} \EP \ {Efficient Policy Adaptation with Contrastive Prompt Ensemble for Embodied Agents} \\
+    {Wonje Choi, \textbf{Woo Kyung Kim}, SeungHyun Kim, Honguk Woo} \\
+    {Conference on Neural Information Processing Systems (NeurIPS), 2023.12} \\
+    \vspace{1.5mm}
+
+    \textbf{[c.01]} \SL \ {One-shot Imitation in a Non-Stationary Environment via Multi-Modal Skill} \\
+    {Sangwoo Shin, Daehee Lee, Minjong Yoo, \textbf{Woo Kyung Kim}, Honguk Woo} \\
+    {International Conference on Machine Learning (ICML), 2023.07} \\
+    \vspace{1.5mm}
+
+    \textbf{[j.01]} \RL \ {Repot: Transferable Reinforcement Learning for Quality-Centric Networked Monitoring in Various Environments} \\
+    {Youngseok Lee, \textbf{Woo Kyung Kim}, Sung Hyun Choi, Ikjun Yeom, Honguk Woo} \\
+    {IEEE Access, vol. 9, pp. 147280-147294, 2021.11} \\
+    }}
+ \end{itemize}
+
+%-----------Extracurriculars-----------
+% \section{Extracurricular Activities}
+%   \resumeSubHeadingListStart
+
+
+%   \resumeSubHeadingListEnd
+
+
+% %-----------Experience-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {CSI Agent Lab}{Aug. 2026 -- Present}
+      {Lab Leader; Physical AI Team Leader}{}
+      \resumeItemListStart
+        \resumeItem{Lead a lab of $\sim$30 students and mentor a 10-member Physical AI team}
+      \resumeItemListEnd
+
+        \resumeSubheading
+      {SKKU Student Ambassador}{Mar. 2017 -- Aug. 2018}
+      {President}{}
+      \resumeItemListStart
+        \resumeItem{Promoted the computer science and engineering department to high school students through nationwide tours.}
+      \resumeItemListEnd
+
+%     \resumeSubheading
+%       {Private Math Tutor}{Sept. 2021 -- Present}
+%       {Team Captain}{Brooklyn, NY}
+%       \resumeItemListStart
+%         \resumeItem{Provided personalized tutoring sessions in algebra, calculus, and geometry to elementary \& middle-school students}
+%         \resumeItem{Developed lesson plans for diverse learning styles, leading to improvements by \textbf{upwards of 1.5 letter grades}.}
+%         \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+
+\section{Awards}
+    \resumeSubHeadingListStart
+      \resumeSubheading
+      {AI Co-Scientist Challenge Korea}{Jan. 2026 -- Apr. 2026}
+      {}{}
+      \resumeItemListStart
+      \vspace{-4mm}
+        \resumeItem{RAPIDS: Robot AI Agents Pipeline for Intelligent Data Collection \& Skill Learning}
+      \resumeItemListEnd
+
+    % \resumeSubheading
+    %   {KAIA Physical AI Challenge }{Aug. 2026 -- Aug. 2026}
+    %   {}{}
+    %   \resumeItemListStart
+    %   \vspace{-4mm}
+    %     \resumeItem{Drum2Fold: 저비용 오픈소스 양팔 SO101 로봇과 이동식 Lekiwi를 확용한 세탁물 회수 및 개기 자동화 파이프라인}
+    %   \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+% %-----------Courses-----------
+% \section{Classes}
+%  \begin{itemize}[leftmargin=0.15in, label={}]
+%     \small{\item{
+%     \vspace{1mm}
+%      \textbf{Courses}{: AP Calulus BC, AP Chemistry, AP Physics, AP World History, AP U.S. History, AP Statistics, AP Literature} \\
+
+%     }}
+%  \end{itemize}
+
+
+%-----------Skill and Interests-----------
+\section{Skills \& Interests}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+    \textbf{Research Interests}{: Skill-based Reinforcement Learning, Diffusion Model, Embodied Agent} \\
+    \vspace{1mm}
+    \textbf{Robots}{: LeRobot SO-101, AgileX Piper, UR7e+Robotiq 2F-85, Inspire Dex Hand RH5DG2 (13-DoF)} \\
+    \vspace{1mm}
+    \textbf{Language}{: Korean (native), English (Fluent), Mandarin Chinese (intermediate)} \\
+    }}
+ \end{itemize}
+
+\begin{center}
+
+% \small 123-456-7890 $|$
+\href{kwk2696@g.skku.edu}{\underline{kwk2696@g.skku.edu}} $|$
+\href{linkedin.com/in/woo-kyung-kim-3474242a2}{\underline{linkedin.com/in/woo-kyung-kim-3474242a2}}
+\end{center}
+
+
+\end{document}
