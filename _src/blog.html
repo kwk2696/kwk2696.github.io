@@ -4,7 +4,7 @@ active: blog
 base: 
 lang: en
 title: Blog - Woo Kyung Kim
-desc: Blog by Woo Kyung Kim - notes on robotics, reinforcement learning, vision-language-action models, and building real robot systems.
+desc: Blog by Woo Kyung Kim - technical notes on robotics, reinforcement learning, and building real robot systems, plus looser thoughts on research and life.
 -->
 <!DOCTYPE html>
 <html lang="{{LANG}}">
@@ -17,16 +17,40 @@ desc: Blog by Woo Kyung Kim - notes on robotics, reinforcement learning, vision-
 
     <div class="blog-container">
       <h1>Blog</h1>
-      <div class="tag-filter" id="tag-filter"></div>
-      <ul class="post-list" id="post-list">
-        <li data-tags="robosynapse ros2">
-          <div class="post-date">2026-09-19</div>
-          <a class="post-title" href="blog/control-server-ros2.html">[Robosynapse] Control Server: Docker 위에 ROS2 올리기</a>
-          <div class="post-tags"><span class="tag">robosynapse</span><span class="tag">ros2</span></div>
-        </li>
-      </ul>
+      <!--
+        Two panels. To add a post, copy an <li> into the matching list, newest first:
+          <li data-tags="tag1 tag2">
+            <div class="post-date">YYYY-MM-DD</div>
+            <a class="post-title" href="blog/your-post.html">Title</a>
+            <div class="post-tags"><span class="tag">tag1</span><span class="tag">tag2</span></div>
+          </li>
+        A Thoughts post can drop data-tags and the post-tags row. Point the post's
+        "Back to Blog" link at ../blog.html#tech or ../blog.html#thoughts.
+      -->
+
+      <section class="blog-panel" data-panel="tech" data-tab="Tech">
+        <h2 class="blog-panel-title">Tech</h2>
+        <p class="blog-panel-intro">Engineering notes from building robot systems: setups, pipelines, and what broke along the way.</p>
+        <div class="tag-filter"></div>
+        <ul class="post-list">
+          <li data-tags="robosynapse ros2">
+            <div class="post-date">2026-09-19</div>
+            <a class="post-title" href="blog/control-server-ros2.html">[Robosynapse] Control Server: Docker 위에 ROS2 올리기</a>
+            <div class="post-tags"><span class="tag">robosynapse</span><span class="tag">ros2</span></div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="blog-panel" data-panel="thoughts" data-tab="Thoughts">
+        <h2 class="blog-panel-title">Thoughts</h2>
+        <p class="blog-panel-intro">Looser writing: research life, half-formed ideas, and whatever else is on my mind.</p>
+        <div class="tag-filter"></div>
+        <ul class="post-list">
+        </ul>
+        <p class="blog-empty">Nothing here yet.</p>
+      </section>
     </div>
 {{> footer}}
-    <script src="assets/tag-filter.js"></script>
+    <script src="assets/blog.js"></script>
   </body>
 </html>

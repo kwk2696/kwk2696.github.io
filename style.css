@@ -634,6 +634,83 @@ hr {
   line-height: 1.45;
 }
 
+/* Blog panels: Tech and Thoughts, shown as tabs once blog.js runs */
+.blog-tabs {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--hr-color);
+}
+
+.blog-tab {
+  padding: 0 0 10px;
+  margin-bottom: -1px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-color);
+  opacity: 0.55;
+  cursor: pointer;
+  transition: opacity 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.blog-tab:hover {
+  opacity: 0.85;
+}
+
+.blog-tab.active {
+  color: var(--link-color);
+  border-bottom-color: var(--link-color);
+  opacity: 1;
+}
+
+.blog-tab-count {
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.blog-panel + .blog-panel {
+  margin-top: 40px;
+}
+
+.has-tabs .blog-panel + .blog-panel {
+  margin-top: 0;
+}
+
+.blog-panel-title {
+  font-size: 20px;
+  color: var(--name-color);
+  margin: 0 0 6px;
+}
+
+.has-tabs .blog-panel-title {
+  display: none;
+}
+
+.blog-panel-intro {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.blog-empty {
+  padding: 20px 0;
+  font-size: 14px;
+  color: var(--text-color);
+  opacity: 0.55;
+}
+
+.blog-empty[hidden],
+.tag-filter:empty {
+  display: none;
+}
+
 /* Blog tags */
 .tag {
   display: inline-block;
