@@ -766,12 +766,6 @@ hr {
   line-height: 1.85;
 }
 
-/* Korean posts wrap between words, not inside them */
-html[lang="ko"] .post-content {
-  word-break: keep-all;
-  overflow-wrap: break-word;
-}
-
 /* Post header: title, date, tags, then one divider */
 .post-header {
   margin-bottom: 40px;
